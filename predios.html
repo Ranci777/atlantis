@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Prédios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            background-color: #007BFF; /* Azul */
+            overflow: hidden;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            float: left;
+        }
+
+        .menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF; /* Azul */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="admin.html">Início</a></li>
+            <li><a href="manutencoes.html">Gerenciar Manutenções</a></li>
+            <li><a href="cotacoes.html">Cotações de Peças</a></li>
+            <li><a href="predios.html" aria-current="page">Lista de Prédios</a></li>
+            <li><a href="aprovacoes.html">Aprovação de Compras</a></li>
+            <li><a href="#" onclick="logout()">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h2>Lista de Prédios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Prédio</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Prédio 1</td><td>(11)1234-5678</td></tr>
+                <tr><td>2</td><td>Prédio 2</td><td>(11)1234-5679</td></tr>
+                <tr><td>3</td><td>Prédio 3</td><td>(11)1234-5680</td></tr>
+                <tr><td>4</td><td>Prédio 4</td><td>(11)1234-5681</td></tr>
+                <tr><td>5</td><td>Prédio 5</td><td>(11)1234-5682</td></tr>
+                <tr><td>6</td><td>Prédio 6</td><td>(11)1234-5683</td></tr>
+                <tr><td>7</td><td>Prédio 7</td><td>(11)1234-5684</td></tr>
+                <tr><td>8</td><td>Prédio 8</td><td>(11)1234-5685</td></tr>
+                <tr><td>9</td><td>Prédio 9</td><td>(11)1234-5686</td></tr>
+                <tr><td>10</td><td>Prédio 10</td><td>(11)1234-5687</td></tr>
+                <tr><td>11</td><td>Prédio 11</td><td>(11)1234-5688</td></tr>
+                <tr><td>12</td><td>Prédio 12</td><td>(11)1234-5689</td></tr>
+                <tr><td>13</td><td>Prédio 13</td><td>(11)1234-5690</td></tr>
+                <tr><td>14</td><td>Prédio 14</td><td>(11)1234-5691</td></tr>
+                <tr><td>15</td><td>Prédio 15</td><td>(11)1234-5692</td></tr>
+                <tr><td>16</td><td>Prédio 16</td><td>(11)1234-5693</td></tr>
+                <tr><td>17</td><td>Prédio 17</td><td>(11)1234-5694</td></tr>
+                <tr><td>18</td><td>Prédio 18</td><td>(11)1234-5695</td></tr>
+                <tr><td>19</td><td>Prédio 19</td><td>(11)1234-5696</td></tr>
+                <tr><td>20</td><td>Prédio 20</td><td>(11)1234-5697</td></tr>
+                <tr><td>21</td><td>Prédio 21</td><td>(11)1234-5698</td></tr>
+                <tr><td>22</td><td>Prédio 22</td><td>(11)1234-5699</td></tr>
+                <tr><td>23</td><td>Prédio 23</td><td>(11)1234-5700</td></tr>
+                <tr><td>24</td><td>Prédio 24</td><td>(11)1234-5701</td></tr>
+                <tr><td>25</td><td>Prédio 25</td><td>(11)1234-5702</td></tr>
+                <tr><td>26</td><td>Prédio 26</td><td>(11)1234-5703</td></tr>
+                <tr><td>27</td><td>Prédio 27</td><td>(11)1234-5704</td></tr>
+                <tr><td>28</td><td>Prédio 28</td><td>(11)1234-5705</td></tr>
+                <tr><td>29</td><td>Prédio 29</td><td>(11)1234-5706</td></tr>
+                <tr><td>30</td><td>Prédio 30</td><td>(11)1234-5707</td></tr>
+                <tr><td>31</td><td>Prédio 31</td><td>(11)1234-5708</td></tr>
+                <tr><td>32</td><td>Prédio 32</td><td>(11)1234-5709</td></tr>
+                <tr><td>33</td><td>Prédio 33</td><td>(11)1234-5710</td></tr>
+                <tr><td>34</td><td>Prédio 34</td><td>(11)1234-5711</td></tr>
+                <tr><td>35</td><td>Prédio 35</td><td>(11)1234-5712</td></tr>
+                <tr><td>36</td><td>Prédio 36</td><td>(11)1234-5713</td></tr>
+                <tr><td>37</td><td>Prédio 37</td><td>(11)1234-5714</td></tr>
+                <tr><td>38</td><td>Prédio 38</td><td>(11)1234-5715</td></tr>
+                <tr><td>39</td><td>Prédio 39</td><td>(11)1234-5716</td></tr>
+                <tr><td>40</td><td>Prédio 40</td><td>(11)1234-5717</td></tr>
+                <tr><td>41</td><td>Prédio 41</td><td>(11)1234-5718</td></tr>
+                <tr><td>42</td><td>Prédio 42</td><td>(11)1234-5719</td></tr>
+                <tr><td>43</td><td>Prédio 43</td><td>(11)1234-5720</td></tr>
+                <tr><td>44</td><td>Prédio 44</td><td>(11)1234-5721</td></tr>
+                <tr><td>45</td><td>Prédio 45</td><td>(11)1234-5722</td></tr>
+                <tr><td>46</td><td>Prédio 46</td><td>(11)1234-5723</td></tr>
+                <tr><td>47</td><td>Prédio 47</td><td>(11)1234-5724</td></tr>
+                <tr><td>48</td><td>Prédio 48</td><td>(11)1234-5725</td></tr>
+                <tr><td>49</td><td>Prédio 49</td><td>(11)1234-5726</td></tr>
+                <tr><td>50</td><td>Prédio 50</td><td>(11)1234-5727</td></tr>
+                <tr><td>51</td><td>Prédio 51</td><td>(11)1234-5728</td></tr>
+                <tr><td>52</td><td>Prédio 52</td><td>(11)1234-5729</td></tr>
+                <tr><td>53</td><td>Prédio 53</td><td>(11)1234-5730</td></tr>
+                <tr><td>54</td><td>Prédio 54</td><td>(11)1234-5731</td></tr>
+                <tr><td>55</td><td>Prédio 55</td><td>(11)1234-5732</td></tr>
+                <tr><td>56</td><td>Prédio 56</td><td>(11)1234-5733</td></tr>
+                <tr><td>57</td><td>Prédio 57</td><td>(11)1234-5734</td></tr>
+                <tr><td>58</td><td>Prédio 58</td><td>(11)1234-5735</td></tr>
+                <tr><td>59</td><td>Prédio 59</td><td>(11)1234-5736</td></tr>
+                <tr><td>60</td><td>Prédio 60</td><td>(11)1234-5737</td></tr>
+                <tr><td>61</td><td>Prédio 61</td><td>(11)1234-5738</td></tr>
+                <tr><td>62</td><td>Prédio 62</td><td>(11)1234-5739</td></tr>
+                <tr><td>63</td><td>Prédio 63</td><td>(11)1234-5740</td></tr>
+                <tr><td>64</td><td>Prédio 64</td><td>(11)1234-5741</td></tr>
+                <tr><td>65</td><td>Prédio 65</td><td>(11)1234-5742</td></tr>
+                <tr><td>66</td><td>Prédio 66</td><td>(11)1234-5743</td></tr>
+                <tr><td>67</td><td>Prédio 67</td><td>(11)1234-5744</td></tr>
+                <tr><td>68</td><td>Prédio 68</td><td>(11)1234-5745</td></tr>
+                <tr><td>69</td><td>Prédio 69</td><td>(11)1234-5746</td></tr>
+                <tr><td>70</td><td>Prédio 70</td><td>(11)1234-5747</td></tr>
+                <tr><td>71</td><td>Prédio 71</td><td>(11)1234-5748</td></tr>
+                <tr><td>72</td><td>Prédio 72</td><td>(11)1234-5749</td></tr>
+                <tr><td>73</td><td>Prédio 73</td><td>(11)1234-5750</td></tr>
+                <tr><td>74</td><td>Prédio 74</td><td>(11)1234-5751</td></tr>
+                <tr><td>75</td><td>Prédio 75</td><td>(11)1234-5752</td></tr>
+                <tr><td>76</td><td>Prédio 76</td><td>(11)1234-5753</td></tr>
+                <tr><td>77</td><td>Prédio 77</td><td>(11)1234-5754</td></tr>
+                <tr><td>78</td><td>Prédio 78</td><td>(11)1234-5755</td></tr>
+                <tr><td>79</td><td>Prédio 79</td><td>(11)1234-5756</td></tr>
+                <tr><td>80</td><td>Prédio 80</td><td>(11)1234-5757</td></tr>
+                <tr><td>81</td><td>Prédio 81</td><td>(11)1234-5758</td></tr>
+                <tr><td>82</td><td>Prédio 82</td><td>(11)1234-5759</td></tr>
+                <tr><td>83</td><td>Prédio 83</td><td>(11)1234-5760</td></tr>
+                <tr><td>84</td><td>Prédio 84</td><td>(11)1234-5761</td></tr>
+                <tr><td>85</td><td>Prédio 85</td><td>(11)1234-5762</td></tr>
+                <tr><td>86</td><td>Prédio 86</td><td>(11)1234-5763</td></tr>
+                <tr><td>87</td><td>Prédio 87</td><td>(11)1234-5764</td></tr>
+                <tr><td>88</td><td>Prédio 88</td><td>(11)1234-5765</td></tr>
+                <tr><td>89</td><td>Prédio 89</td><td>(11)1234-5766</td></tr>
+                <tr><td>90</td><td>Prédio 90</td><td>(11)1234-5767</td></tr>
+                <tr><td>91</td><td>Prédio 91</td><td>(11)1234-5768</td></tr>
+                <tr><td>92</td><td>Prédio 92</td><td>(11)1234-5769</td></tr>
+                <tr><td>93</td><td>Prédio 93</td><td>(11)1234-5770</td></tr>
+                <tr><td>94</td><td>Prédio 94</td><td>(11)1234-5771</td></tr>
+                <tr><td>95</td><td>Prédio 95</td><td>(11)1234-5772</td></tr>
+                <tr><td>96</td><td>Prédio 96</td><td>(11)1234-5773</td></tr>
+                <tr><td>97</td><td>Prédio 97</td><td>(11)1234-5774</td></tr>
+                <tr><td>98</td><td>Prédio 98</td><td>(11)1234-5775</td></tr>
+                <tr><td>99</td><td>Prédio 99</td><td>(11)1234-5776</td></tr>
+                <tr><td>100</td><td>Prédio 100</td><td>(11)1234-5777</td></tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
