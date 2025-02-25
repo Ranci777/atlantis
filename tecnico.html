@@ -46,6 +46,29 @@
         .form-group {
             margin-bottom: 15px;
         }
+
+        input[type="text"],
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745; /* Verde */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838; /* Verde mais escuro */
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
@@ -70,14 +93,17 @@
 
             doc.save(`ficha_anotacoes_${numeroSerie}.pdf`);
         }
+
+        function logout() {
+            alert("Você saiu do sistema.");
+        }
     </script>
 </head>
 <body>
-    <nav class="menu">
+    <nav class="menu" role="navigation" aria-label="Menu do Técnico">
         <ul>
-            <li><a href="tecnico.html">Início</a></li>
-            <li><a href="#">Manutenções Diárias</a></li>
-            <li><a href="#">Manutenções Mensais</a></li>
+            <li><a href="tecnico.html" aria-current="page">Início</a></li>
+            <li><a href="#" onclick="document.getElementById('ficha').scrollIntoView();">Ficha de Anotações</a></li>
             <li><a href="#" onclick="logout()">Sair</a></li>
         </ul>
     </nav>
@@ -95,7 +121,7 @@
                 </div>
                 <div class="form-group">
                     <label for="anotacao">Anotação:</label><br>
-                    <textarea id="anotacao" required></textarea>
+                    <textarea id="anotacao" rows="4" required></textarea>
                 </div>
                 <input type="submit" value="Emitir PDF">
             </form>
