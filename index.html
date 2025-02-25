@@ -10,9 +10,11 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Verificação simples (substitua pela lógica real de autenticação)
-            if (username === "admin" && password === "senha") { // Exemplo: substitua "senha" pela senha correta
+            // Verificação de credenciais
+            if (username === "admin" && password === "admin123") {
                 window.location.href = "admin.html"; // Redireciona para o painel do administrador
+            } else if (username === "tecnico" && password === "tecnico123") {
+                window.location.href = "tecnico.html"; // Redireciona para o painel do técnico
             } else {
                 document.getElementById("login-error").innerText = "Usuário ou senha incorretos.";
             }
