@@ -49,10 +49,25 @@
             }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
         function logout() {
             alert("Você saiu do sistema.");
             window.location.href = "login.html"; // Redireciona para a página de login
+        }
+
+        function gerarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Adicionando conteúdo ao PDF
+            doc.text("Cotações de Peças", 20, 20);
+            doc.text("Descrição: " + document.getElementById('descricao').value, 20, 30);
+            doc.text("Valor: " + document.getElementById('valor').value, 20, 40);
+            doc.text("Fornecedor: " + document.getElementById('fornecedor').value, 20, 50);
+
+            // Baixar o PDF
+            doc.save("cotacao.pdf");
         }
     </script>
 </head>
@@ -72,7 +87,7 @@
         <p>Aqui você pode gerenciar as cotações de peças. Adicione novas cotações e visualize as existentes.</p>
         
         <h3>Adicionar Nova Cotação</h3>
-        <form>
+        <form onsubmit="event.preventDefault(); gerarPDF();">
             <label for="descricao">Descrição da Peça:</label><br>
             <input type="text" id="descricao" name="descricao" required><br><br>
 
@@ -82,7 +97,7 @@
             <label for="fornecedor">Fornecedor:</label><br>
             <input type="text" id="fornecedor" name="fornecedor" required><br><br>
 
-            <input type="submit" value="Adicionar Cotação">
+            <input type="submit" value="Emitir Cotação em PDF">
         </form>
 
         <h3>Lista de Cotações</h3>
@@ -93,5 +108,25 @@
                     <th>Valor</th>
                     <th>Fornecedor</th>
                 </tr>
-            </
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Exemplo de Peça 1</td>
+                    <td>R$ 100,00</td>
+                    <td>Fornecedor A</td>
+                </tr>
+                <tr>
+                    <td>Exemplo de Peça 2</td>
+                    <td>R$ 150,00</td>
+                    <td>Fornecedor B</td>
+                </tr>
+                <!-- Adicione mais linhas conforme necessário -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+                  
 
