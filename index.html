@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Manutenção de Elevadores</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="login-container" id="login-form">
+        <h2>Login</h2>
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" required>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+        <button onclick="login()">Entrar</button>
+        <p id="login-error" class="error"></p>
+    </div>
+
+    <div id="admin-panel" class="panel hidden">
+        <h2>Painel do Administrador</h2>
+        <button onclick="logout()">Sair</button>
+        <ul>
+            <li><a href="#">Gerenciar Manutenções</a></li>
+            <li><a href="#">Cotações de Peças</a></li>
+            <li><a href="#">Lista de Prédios</a></li>
+            <li><a href="#">Aprovação de Compras</a></li>
+        </ul>
+    </div>
+
+    <div id="tecnico-panel" class="panel hidden">
+        <h2>Painel do Técnico</h2>
+        <button onclick="logout()">Sair</button>
+        <ul>
+            <li><a href="#">Manutenções Diárias</a></li>
+            <li><a href="#">Manutenções Mensais</a></li>
+        </ul>
+    </div>
+</body>
+</html>
