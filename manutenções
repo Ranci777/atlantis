@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Manutenção de Elevadores</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        #login-container, #admin-panel, #tecnico-panel {
+            background-color: #001f3f;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 50px auto;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            background-color: #f0f0f0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <div id="admin-panel" class="hidden">
+        <h2>Painel do Administrador</h2>
+        <button onclick="gerenciarManutencoes()">Gerenciar Manutenções</button>
+        <button onclick="gerenciarPecas()">Cotações de Peças</button>
+        <button onclick="listarPredios()">Lista de Prédios</button>
+        <button onclick="aprovarCompras()">Aprovação de Compras</button>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <div id="tecnico-panel" class="hidden">
+        <h2>Painel do Técnico</h2>
+        <button onclick="visualizarManutencoes()">Manutenções Diárias e Mensais</button>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        const users = {
+            'admin': 'admin123',
+            'tecnico': 'tecnico123'
+        };
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (users[username] && users[username] === password) {
+                document.getElementById('login-container').classList.add('hidden');
+                if (username === 'admin') {
+                    document.getElementById('admin-panel').classList.remove('hidden');
+                } else if (username === 'tecnico') {
+                    document.getElementById('tecnico-panel').classList.remove('hidden');
+                }
+            } else {
+                alert('Usuário ou senha incorretos!');
+            }
+        }
+
+        function logout() {
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('tecnico-panel').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function gerenciarManutencoes() {
+            alert('Gerenciando manutenções');
+        }
+
+        function gerenciarPecas() {
+            alert('Gerenciando cotações de peças');
+        }
+
+        function listarPredios() {
+            alert('Listando prédios');
+        }
+
+        function aprovarCompras() {
+            alert('Aprovando compras');
+        }
+
+        function visualizarManutencoes() {
+            alert('Visualizando manutenções diárias e mensais');
+        }
+    </script>
+</body>
+</html>
