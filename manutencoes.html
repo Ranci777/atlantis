@@ -59,6 +59,10 @@
             background-color: #007BFF; /* Azul */
             color: white;
         }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
     </style>
     <script>
         function logout() {
@@ -68,21 +72,34 @@
         function adicionarManutencao(event) {
             event.preventDefault(); // Evita o envio do formulário
 
-            const descricao = document.getElementById('descricao').value;
-            const data = new Date().toLocaleDateString('pt-BR');
+            const edificio = document.getElementById('edificio').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            const anotacao = document.getElementById('anotacao').value;
+            const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
             // Adiciona a nova linha na tabela de manutenções
             const tabela = document.getElementById('tabela-manutencoes');
             const novaLinha = tabela.insertRow();
 
-            const celulaDescricao = novaLinha.insertCell(0);
+            const celulaEdificio = novaLinha.insertCell(0);
             const celulaData = novaLinha.insertCell(1);
+            const celulaHorario = novaLinha.insertCell(2);
+            const celulaAnotacao = novaLinha.insertCell(3);
+            const celulaTipo = novaLinha.insertCell(4);
 
-            celulaDescricao.textContent = descricao;
+            celulaEdificio.textContent = edificio;
             celulaData.textContent = data;
+            celulaHorario.textContent = horario;
+            celulaAnotacao.textContent = anotacao;
+            celulaTipo.textContent = tipo;
 
-            // Limpa o campo de descrição
-            document.getElementById('descricao').value = '';
+            // Limpa os campos do formulário
+            document.getElementById('edificio').value = '';
+            document.getElementById('data').value = '';
+            document.getElementById('horario').value = '';
+            document.getElementById('anotacao').value = '';
+            document.querySelector('input[name="tipo"]:checked').checked = false;
         }
     </script>
 </head>
@@ -98,12 +115,33 @@
         </ul>
     </nav>
     <div class="content">
-        <h2>Gerenciar Manutenções</h2>
+        <h2>Relatório Diário de Manutenções</h2>
         <p>Registre as manutenções diárias abaixo:</p>
         
         <form onsubmit="adicionarManutencao(event);">
-            <label for="descricao">Descrição da Manutenção:</label><br>
-            <input type="text" id="descricao" name="descricao" required><br><br>
+            <div class="form-group">
+                <label for="edificio">Nome do Prédio:</label><br>
+                <input type="text" id="edificio" name="edificio" required>
+            </div>
+            <div class="form-group">
+                <label for="data">Data:</label><br>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <div class="form-group">
+                <label for="horario">Horário:</label><br>
+                <input type="time" id="horario" name="horario" required>
+            </div>
+            <div class="form-group">
+                <label for="anotacao">Anotação:</label><br>
+                <textarea id="anotacao" name="anotacao" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Tipo de Manutenção:</label><br>
+                <input type="radio" id="andar" name="tipo" value="Em Andamento" required>
+                <label for="andar">Em Andamento</label><br>
+                <input type="radio" id="periodica" name="tipo" value="Manutenção Periódica" required>
+                <label for="periodica">Manutenção Periódica</label>
+            </div>
             <input type="submit" value="Adicionar Manutenção">
         </form>
 
@@ -111,8 +149,11 @@
         <table id="tabela-manutencoes">
             <thead>
                 <tr>
-                    <th>Descrição</th>
+                    <th>Nome do Prédio</th>
                     <th>Data</th>
+                    <th>Horário</th>
+                    <th>Anotação</th>
+                    <th>Tipo</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,5 +163,3 @@
     </div>
 </body>
 </html>
-
-
