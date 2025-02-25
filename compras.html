@@ -1,1 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            background-color: #007BFF; /* Azul */
+            overflow: hidden;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            float: left;
+        }
+
+        .menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script>
+        function emitPdf() {
+            alert("Emitindo PDF das compras...");
+            // Lógica para gerar PDF
+        }
+
+        function exportExcel() {
+            alert("Exportando tabela para Excel...");
+            // Lógica para exportar para Excel
+        }
+    </script>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="admin.html">Início</a></li>
+            <li><a href="manutencoes.html">Gerenciar Manutenções</a></li>
+            <li><a href="cotacoes.html">Cotações de Peças</a></li>
+            <li><a href="predios.html">Lista de Prédios</a></li>
+            <li><a href="compras.html">Gerenciar Compras</a></li>
+            <li><a href="#" onclick="logout()">Sair</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h2>Gerenciar Compras</h2>
+
+        <h3>Peças a serem compradas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
+                    <th>Fornecedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adicione aqui as peças a serem compradas -->
+                <tr>
+                    <td>Peça A</td>
+                    <td>10</td>
+                    <td>Fornecedor 1</td>
+                </tr>
+                <tr>
+                    <td>Peça B</td>
+                    <td>5</td>
+                    <td>Fornecedor 2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Peças em Processo de Aprovação</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adicione aqui as peças em processo de aprovação -->
+                <tr>
+                    <td>Peça C</td>
+                    <td>8</td>
+                    <td>Em Aprovação</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Peças Já Pedidas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
+                    <th>Data do Pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adicione aqui as peças já pedidas -->
+                <tr>
+                    <td>Peça D</td>
+                    <td>12</td>
+                    <td>01/02/2025</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="emitPdf()">Emitir PDF</button>
+        <button onclick="exportExcel()">Exportar para Excel</button>
+    </div>
+</body>
+</html>
 
