@@ -42,10 +42,47 @@
         .content {
             padding: 20px;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF; /* Azul */
+            color: white;
+        }
     </style>
     <script>
         function logout() {
             alert("Você saiu do sistema.");
+        }
+
+        function adicionarManutencao(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            const descricao = document.getElementById('descricao').value;
+            const data = new Date().toLocaleDateString('pt-BR');
+
+            // Adiciona a nova linha na tabela de manutenções
+            const tabela = document.getElementById('tabela-manutencoes');
+            const novaLinha = tabela.insertRow();
+
+            const celulaDescricao = novaLinha.insertCell(0);
+            const celulaData = novaLinha.insertCell(1);
+
+            celulaDescricao.textContent = descricao;
+            celulaData.textContent = data;
+
+            // Limpa o campo de descrição
+            document.getElementById('descricao').value = '';
         }
     </script>
 </head>
@@ -62,7 +99,28 @@
     </nav>
     <div class="content">
         <h2>Gerenciar Manutenções</h2>
-        <p>Conteúdo para gerenciar manutenções vai aqui.</p>
+        <p>Registre as manutenções diárias abaixo:</p>
+        
+        <form onsubmit="adicionarManutencao(event);">
+            <label for="descricao">Descrição da Manutenção:</label><br>
+            <input type="text" id="descricao" name="descricao" required><br><br>
+            <input type="submit" value="Adicionar Manutenção">
+        </form>
+
+        <h3>Lista de Manutenções</h3>
+        <table id="tabela-manutencoes">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As manutenções adicionadas aparecerão aqui -->
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
+
+
