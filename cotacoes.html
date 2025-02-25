@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotações de Peças</title>
+    <title>Gerenciar Compras</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,31 +43,47 @@
             padding: 20px;
         }
 
-        @media (max-width: 600px) {
-            .menu li {
-                float: none;
-            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script>
-        function logout() {
-            alert("Você saiu do sistema.");
-            window.location.href = "login.html"; // Redireciona para a página de login
+        function emitPdf() {
+            alert("Emitindo PDF das compras...");
+            // Lógica para gerar PDF
         }
 
-        function gerarPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Adicionando conteúdo ao PDF
-            doc.text("Cotações de Peças", 20, 20);
-            doc.text("Descrição: " + document.getElementById('descricao').value, 20, 30);
-            doc.text("Valor: " + document.getElementById('valor').value, 20, 40);
-            doc.text("Fornecedor: " + document.getElementById('fornecedor').value, 20, 50);
-
-            // Baixar o PDF
-            doc.save("cotacao.pdf");
+        function exportExcel() {
+            alert("Exportando tabela para Excel...");
+            // Lógica para exportar para Excel
         }
     </script>
 </head>
@@ -76,57 +92,61 @@
         <ul>
             <li><a href="admin.html">Início</a></li>
             <li><a href="manutencoes.html">Gerenciar Manutenções</a></li>
-            <li><a href="cotacoes.html">Cotações de Peças</a></li>
             <li><a href="predios.html">Lista de Prédios</a></li>
-            <li><a href="aprovacoes.html">Aprovação de Compras</a></li>
+            <li><a href="compras.html">Gerenciar Compras</a></li>
             <li><a href="#" onclick="logout()">Sair</a></li>
         </ul>
     </nav>
     <div class="content">
-        <h2>Cotações de Peças</h2>
-        <p>Aqui você pode gerenciar as cotações de peças. Adicione novas cotações e visualize as existentes.</p>
-        
-        <h3>Adicionar Nova Cotação</h3>
-        <form onsubmit="event.preventDefault(); gerarPDF();">
-            <label for="descricao">Descrição da Peça:</label><br>
-            <input type="text" id="descricao" name="descricao" required><br><br>
+        <h2>Gerenciar Compras</h2>
 
-            <label for="valor">Valor:</label><br>
-            <input type="number" id="valor" name="valor" required><br><br>
-
-            <label for="fornecedor">Fornecedor:</label><br>
-            <input type="text" id="fornecedor" name="fornecedor" required><br><br>
-
-            <input type="submit" value="Emitir Cotação em PDF">
-        </form>
-
-        <h3>Lista de Cotações</h3>
-        <table border="1">
+        <h3>Peças a serem compradas</h3>
+        <table>
             <thead>
                 <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
                     <th>Fornecedor</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Exemplo de Peça 1</td>
-                    <td>R$ 100,00</td>
-                    <td>Fornecedor A</td>
-                </tr>
-                <tr>
-                    <td>Exemplo de Peça 2</td>
-                    <td>R$ 150,00</td>
-                    <td>Fornecedor B</td>
-                </tr>
-                <!-- Adicione mais linhas conforme necessário -->
+                <!-- Adicione aqui as peças a serem compradas -->
             </tbody>
         </table>
+
+        <h3>Peças em Processo de Aprovação</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adicione aqui as peças em processo de aprovação -->
+            </tbody>
+        </table>
+
+        <h3>Peças Já Pedidas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Peça</th>
+                    <th>Quantidade</th>
+                    <th>Data do Pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adicione aqui as peças já pedidas -->
+            </tbody>
+        </table>
+
+        <button onclick="emitPdf()">Emitir PDF</button>
+        <button onclick="exportExcel()">Exportar para Excel</button>
     </div>
 </body>
 </html>
-
 
                   
 
