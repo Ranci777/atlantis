@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotações e Lista de Prédios</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            background-color: #007BFF; /* Azul */
+            overflow: hidden;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            float: left;
+        }
+
+        .menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        .content {
+            padding: 20px;
+        }
+    </style>
+    <script>
+        function logout() {
+            alert("Você saiu do sistema.");
+        }
+    </script>
 </head>
 <body>
     <nav class="menu">
@@ -14,7 +56,7 @@
             <li><a href="manutencoes.html">Gerenciar Manutenções</a></li>
             <li><a href="cotacoes.html">Cotações de Peças</a></li>
             <li><a href="predios.html">Lista de Prédios</a></li>
-            <li><a href="compras.html">Aprovação de Compras</a></li>
+            <li><a href="aprovacoes.html">Aprovação de Compras</a></li>
             <li><a href="#" onclick="logout()">Sair</a></li>
         </ul>
     </nav>
