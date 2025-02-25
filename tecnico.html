@@ -4,21 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel do Técnico</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .menu {
+            background-color: #007BFF; /* Azul */
+            overflow: hidden;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            float: left;
+        }
+
+        .menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF; /* Azul */
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+    <script>
+        function logout() {
+            alert("Você saiu do sistema.");
+        }
+
+        function adicionarManutencao(tipo) {
+            const edificio = document.getElementById(`edificio-${tipo}`).value;
+            const data = document.getElementById(`data-${tipo}`).value;
+            const horario = document.getElementById(`horario-${tipo}`).value;
+            const anotacao = document.getElementById(`anotacao-${tipo}`).value;
+
+            // Adiciona a nova linha na tabela correspondente
+            const tabela = document.getElementById(`tabela-${tipo}`);
+            const novaLinha = tabela.insertRow();
+
+            const celulaEdificio = novaLinha.insertCell(0);
+            const celulaData = novaLinha.insertCell(1);
+            const celulaHorario = novaLinha.insertCell(2);
+            const celulaAnotacao = novaLinha.insertCell(3);
+
+            celulaEdificio.textContent = edificio;
+            celulaData.textContent = data;
+            celulaHorario.textContent = horario;
+            celulaAnotacao.textContent = anotacao;
+
+            // Limpa os campos do formulário
+            document.getElementById(`edificio-${tipo}`).value = '';
+            document.getElementById(`data-${tipo}`).value = '';
+            document.getElementById(`horario-${tipo}`).value = '';
+            document.getElementById(`anotacao-${tipo}`).value = '';
+        }
+    </script>
 </head>
 <body>
     <nav class="menu">
         <ul>
             <li><a href="tecnico.html">Início</a></li>
-            <li><a href="#">Manutenções Diárias</a></li>
-            <li><a href="#">Manutenções Mensais</a></li>
+            <li><a href="#" onclick="document.getElementById('manutencao-diaria').scrollIntoView();">Manutenções Diárias</a></li>
+            <li><a href="#" onclick="document.getElementById('manutencao-mensal').scrollIntoView();">Manutenções Mensais</a></li>
             <li><a href="#" onclick="logout()">Sair</a></li>
         </ul>
     </nav>
     <div class="content">
         <h2>Bem-vindo, Técnico!</h2>
         <p>Acompanhe e registre as manutenções diárias e mensais.</p>
+
+        <div id="manutencao-diaria">
+            <h3>Registro de Manutenções Diárias</h3>
+            <form onsubmit="event.preventDefault(); adicionarManutencao('diaria');">
+                <div class="form-group">
+                    <label for="edificio-diaria">Nome do Prédio:</label><br>
+                    <input type="text" id="edificio-diaria" required>
+                </div>
+                <div class="form-group">
+                    <label for="data-diaria">Data:</label><br>
+                    <input type="date" id="data-diaria" required>
+                </div>
+                <div class="form-group">
+                    <label for="horario-diaria">Horário:</label><br>
+                    <input type="time" id="horario-diaria" required>
+                </div>
+                <div class="form-group">
+                    <label for="anotacao-diaria">Anotação:</label><br>
+                    <textarea id="anotacao-diaria" required></textarea>
+                </div>
+                <input type="submit" value="Adicionar Manutenção Diária">
+            </form>
+            <table id="tabela-diaria">
+                <thead>
+                    <tr>
+                        <th>Nome do Prédio</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Anotação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As manutenções diárias adicionadas aparecerão aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="manutencao-mensal">
+            <h3>Registro de Manutenções Mensais</h3>
+            <form onsubmit="event.preventDefault(); adicionarManutencao('mensal');">
+                <div class="form-group">
+                    <label for="edificio-mensal">Nome do Prédio:</label><br>
+                    <input type="text" id="edificio-mensal" required>
+                </div>
+                <div class="form-group">
+                    <label for="data-mensal">Data:</label><br>
+                    <input type="date" id="data-mensal" required>
+                </div>
+                <div class="form-group">
+                    <label for="horario-mensal">Horário:</label><br>
+                    <input type="time" id="horario-mensal" required>
+                </div>
+                <div class="form-group">
+                    <label for="anotacao-mensal">Anotação:</label><br>
+                    <textarea id="anotacao-mensal" required></textarea>
+                </div>
+                <input type="submit" value="Adicionar Manutenção Mensal">
+            </form>
+            <table id="tabela-mensal">
+                <thead>
+                    <tr>
+                        <th>Nome do Prédio</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Anotação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As manutenções mensais adicionadas aparecerão aqui -->
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
