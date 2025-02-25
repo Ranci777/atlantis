@@ -4,8 +4,8 @@ function login() {
     const loginError = document.getElementById('login-error');
 
     if (username === 'admin' && password === 'admin123') {
-        document.getElementById('login-form').classList.add('hidden');
-        document.getElementById('admin-panel').classList.remove('hidden');
+        // Redireciona para admin.html
+        window.location.href = "admin.html"; // Adicione esta linha para redirecionar após o login
     } else if (username === 'tecnico' && password === 'tecnico123') {
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('tecnico-panel').classList.remove('hidden');
