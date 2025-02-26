@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Compras</title>
+    <title>Gerenciar Aprovações</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +15,7 @@
         }
 
         .menu {
-            background-color: #007BFF; /* Azul */
+            background-color: #007BFF;
             overflow: hidden;
         }
 
@@ -36,7 +38,7 @@
         }
 
         .menu li a:hover {
-            background-color: #0056b3; /* Azul mais escuro */
+            background-color: #0056b3;
         }
 
         .content {
@@ -65,6 +67,7 @@
 
         button {
             padding: 10px 15px;
+            margin: 5px;
             background-color: #28a745;
             color: white;
             border: none;
@@ -76,14 +79,59 @@
         }
     </style>
     <script>
-        function emitPdf() {
-            alert("Emitindo PDF das compras...");
-            // Lógica para gerar PDF
+        function addApproval() {
+            const nome = document.getElementById('nome').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const status = "Em Aprovação"; 
+
+            if (nome === "" || quantidade === "") {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const table = document.getElementById('aprovacoesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).innerText = nome;
+            newRow.insertCell(1).innerText = quantidade;
+            newRow.insertCell(2).innerText = status;
+
+            document.getElementById('nome').value = '';
+            document.getElementById('quantidade').value = '';
         }
 
-        function exportExcel() {
-            alert("Exportando tabela para Excel...");
-            // Lógica para exportar para Excel
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text("Lista de Peças em Aprovação", 20, 10);
+
+            let rows = [];
+            const table = document.getElementById("aprovacoesTable");
+            for (let i = 1; i < table.rows.length; i++) {
+                let row = [
+                    table.rows[i].cells[0].innerText,
+                    table.rows[i].cells[1].innerText,
+                    table.rows[i].cells[2].innerText
+                ];
+                rows.push(row);
+            }
+
+            doc.autoTable({
+                head: [["Nome da Peça", "Quantidade", "Status"]],
+                body: rows,
+                startY: 20
+            });
+
+            doc.save("Aprovacoes.pdf");
+        }
+
+        function exportToExcel() {
+            let table = document.getElementById("aprovacoesTable");
+            let wb = XLSX.utils.book_new();
+            let ws = XLSX.utils.table_to_sheet(table);
+            XLSX.utils.book_append_sheet(wb, ws, "Aprovações");
+            XLSX.writeFile(wb, "Aprovacoes.xlsx");
         }
     </script>
 </head>
@@ -99,34 +147,21 @@
         </ul>
     </nav>
     <div class="content">
-        <h2>Gerenciar Compras</h2>
+        <h2>Gerenciar Aprovações</h2>
 
-        <h3>Peças a serem compradas</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome da Peça</th>
-                    <th>Quantidade</th>
-                    <th>Fornecedor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Adicione aqui as peças a serem compradas -->
-                <tr>
-                    <td>Peça A</td>
-                    <td>10</td>
-                    <td>Fornecedor 1</td>
-                </tr>
-                <tr>
-                    <td>Peça B</td>
-                    <td>5</td>
-                    <td>Fornecedor 2</td>
-                </tr>
-            </tbody>
-        </table>
+        <h3>Adicionar Nova Aprovação</h3>
+        <form onsubmit="event.preventDefault(); addApproval();">
+            <label for="nome">Nome da Peça:</label><br>
+            <input type="text" id="nome" required><br><br>
+
+            <label for="quantidade">Quantidade:</label><br>
+            <input type="number" id="quantidade" required><br><br>
+
+            <input type="submit" value="Adicionar Aprovação">
+        </form>
 
         <h3>Peças em Processo de Aprovação</h3>
-        <table>
+        <table id="aprovacoesTable">
             <thead>
                 <tr>
                     <th>Nome da Peça</th>
@@ -135,36 +170,12 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Adicione aqui as peças em processo de aprovação -->
-                <tr>
-                    <td>Peça C</td>
-                    <td>8</td>
-                    <td>Em Aprovação</td>
-                </tr>
+                <!-- Nenhum item inicial -->
             </tbody>
         </table>
 
-        <h3>Peças Já Pedidas</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome da Peça</th>
-                    <th>Quantidade</th>
-                    <th>Data do Pedido</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Adicione aqui as peças já pedidas -->
-                <tr>
-                    <td>Peça D</td>
-                    <td>12</td>
-                    <td>01/02/2025</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button onclick="emitPdf()">Emitir PDF</button>
-        <button onclick="exportExcel()">Exportar para Excel</button>
+        <button onclick="generatePDF()">Emitir PDF</button>
+        <button onclick="exportToExcel()">Exportar para Excel</button>
     </div>
 </body>
 </html>
